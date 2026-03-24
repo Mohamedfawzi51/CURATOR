@@ -1,5 +1,5 @@
 import { Search, ShoppingCart, User } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,6 +10,8 @@ const Navbar = () => {
     { name: "Editorial", path: "/editorial" },
     { name: "Our Story", path: "/our-story" },
   ];
+
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-xl">
@@ -44,7 +46,11 @@ const Navbar = () => {
           <button className="hover:opacity-70 transition-opacity duration-300 scale-98 active:scale-95 transition-transform">
             <User />
           </button>
-          <button className="relative hover:opacity-70 transition-opacity duration-300 scale-98 active:scale-95 transition-transform">
+
+          <button
+            onClick={() => navigate("/cart")}
+            className="relative hover:opacity-70 transition-opacity duration-300 scale-98 active:scale-95 transition-transform"
+          >
             <ShoppingCart />
             <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[8px] text-white">
               2
